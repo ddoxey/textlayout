@@ -102,6 +102,40 @@ class TestTextLayout(unittest.TestCase):
                   '   ']
         self.assertEqual(lines, expect)
 
+    def test_grid_clear(self):
+        """This test demonstrates the text grid clear() method."""
+        grid = TextGrid(3, 3)
+        grid.set("abc\ndef\nghi")
+        lines = str(grid).split("\n")
+        expect = ['abc',
+                  'def',
+                  'ghi']
+        self.assertEqual(lines, expect)
+        grid.clear()
+        lines = str(grid).split("\n")
+        expect = ['   ',
+                  '   ',
+                  '   ']
+        self.assertEqual(lines, expect)
+
+    def test_grid_setnone(self):
+        """This test demonstrates a text grid will clear content
+           if set with None.
+        """
+        grid = TextGrid(3, 3)
+        grid.set("abc\ndef\nghi")
+        lines = str(grid).split("\n")
+        expect = ['abc',
+                  'def',
+                  'ghi']
+        self.assertEqual(lines, expect)
+        grid.set(None)
+        lines = str(grid).split("\n")
+        expect = ['   ',
+                  '   ',
+                  '   ']
+        self.assertEqual(lines, expect)
+
     def test_layout_emtpy1x1(self):
         """This test demonstrates that a new one character layout with
            no text grids added will show zero reservations and no text

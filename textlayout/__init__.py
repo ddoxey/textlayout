@@ -173,6 +173,9 @@ class TextGrid(TextLayout):
             return None
         return {'y': self.ypos, 'x': self.xpos}
 
+    def clear(self):
+        self.rows = []
+
     def write(self, line):
         """Write a line to the grid. Any lines or characters that are
            out of bounds will be discarded.
@@ -191,8 +194,8 @@ class TextGrid(TextLayout):
            strings, or a string with newlines, or an object that can be
            stringified.
         """
+        self.rows = []
         if text is None:
-            self.rows = []
             return
         lines = None
         if isinstance(text, list):
